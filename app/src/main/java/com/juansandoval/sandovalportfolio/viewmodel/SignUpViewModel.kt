@@ -48,6 +48,7 @@ class SignUpViewModel : ViewModel() {
                         val userObject = HashMap<String, String>()
 
                         userObject["display_name"] = name!!.trim()
+                        userObject["status"] = "Hello There"
                         userObject["image"] = "default"
                         userObject["thumb_image"] = "default"
 
