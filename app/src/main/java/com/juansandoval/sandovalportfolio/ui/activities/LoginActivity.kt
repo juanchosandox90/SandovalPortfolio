@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         startHomeActivity()
     }
 
-    override fun onFailure(message: String) {
+    override fun onFailure(message: String?) {
         viewModel.authLiveData.value = Pair(2, message)
     }
 }

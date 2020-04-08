@@ -2,14 +2,27 @@
     <string name="app_name">Sandoval Portfolio</string>
     <string name="email_title">Email</string>
     <string name="email_login_hint">Enter your email</string>
+    <string name="email_signup_hint">Enter your email</string>
     <string name="enter_your_password_login_hint">Enter your password</string>
+    <string name="enter_your_password_signup_hint">Enter your password</string>
+    <string name="confirm_your_password_sign_up_hint">Confirm your password</string>
     <string name="password_login_title">Password</string>
+    <string name="password_signup_title">Password</string>
     <string name="dont_have_an_account_option">Don\'t have an account.\nRegister Here</string>
+    <string name="already_have_an_account_option">Already have an account.\nLogin Here</string>
+    <string name="invalid_email_password">Invalid email or password</string>
     <string name="log_in_text_btn">Log in</string>
+    <string name="sign_up_text_btn">Sign up</string>
     <string name="google_login_text_btn">Sign in with Google</string>
+    <string name="google_signup_text_btn">Sign up with Google</string>
     <string name="forgot_password_option">Forgot Password?</string>
     <string name="or_separator_login">or</string>
     <string name="success_login">Success!</string>
     <string name="ops_something_went_wrong">Ops! something went wrong</string>
     <string name="loading_login">Loading …</string>
+    <string name="success_signup">Success!</string>
+    <string name="loading_signup">Loading …</string>
+    <string name="name_signup_title">Name</string>
+    <string name="name_signup_hint">Enter your name</string>
+    <string name="confirm_password_sign_up_title">Confirm Password</string>
 </resources>

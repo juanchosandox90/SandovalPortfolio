@@ -1,10 +1,12 @@
 package com.juansandoval.sandovalportfolio.viewmodel
 
+import android.content.Intent
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.juansandoval.sandovalportfolio.ui.activities.SignUpActivity
 import com.juansandoval.sandovalportfolio.ui.auth.AuthListener
 
 class LoginViewModel : ViewModel() {
@@ -38,5 +40,11 @@ class LoginViewModel : ViewModel() {
 
     fun verifyUserLoggedIn(): FirebaseUser? {
         return firebaseAuth.currentUser
+    }
+
+    fun goToSignup(view: View) {
+        Intent(view.context, SignUpActivity::class.java).also {
+            view.context.startActivity(it)
+        }
     }
 }
