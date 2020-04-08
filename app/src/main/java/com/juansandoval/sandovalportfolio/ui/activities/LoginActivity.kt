@@ -20,7 +20,6 @@ import com.juansandoval.sandovalportfolio.R
 import com.juansandoval.sandovalportfolio.databinding.ActivityLoginBinding
 import com.juansandoval.sandovalportfolio.ui.auth.AuthListener
 import com.juansandoval.sandovalportfolio.utils.CustomDialog
-import com.juansandoval.sandovalportfolio.utils.startHomeActivity
 import com.juansandoval.sandovalportfolio.viewmodel.LoginViewModel
 
 
@@ -62,7 +61,10 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     private fun verifyUser() {
         val user = viewModel.verifyUserLoggedIn()
         if (user != null) {
-            startHomeActivity()
+            val dashboardIntent = Intent(applicationContext, HomeActivity::class.java)
+            dashboardIntent.putExtra("userId", firebaseAuth.currentUser!!.uid)
+            dashboardIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(dashboardIntent)
         }
     }
 
@@ -72,7 +74,11 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
     override fun onSuccess() {
         viewModel.authLiveData.value = Pair(1, null)
-        startHomeActivity()
+        val homeIntent = Intent(applicationContext, HomeActivity::class.java)
+        homeIntent.putExtra("userId", firebaseAuth.currentUser!!.uid)
+        homeIntent.flags =
+            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        applicationContext.startActivity(homeIntent)
     }
 
     override fun onFailure(message: String?) {

@@ -20,7 +20,6 @@ import com.juansandoval.sandovalportfolio.R
 import com.juansandoval.sandovalportfolio.databinding.ActivitySignUpBinding
 import com.juansandoval.sandovalportfolio.ui.auth.AuthListener
 import com.juansandoval.sandovalportfolio.utils.CustomDialog
-import com.juansandoval.sandovalportfolio.utils.startHomeActivity
 import com.juansandoval.sandovalportfolio.viewmodel.SignUpViewModel
 
 class SignUpActivity : AppCompatActivity(), AuthListener {
@@ -64,7 +63,11 @@ class SignUpActivity : AppCompatActivity(), AuthListener {
 
     override fun onSuccess() {
         viewModel.signupLiveData.value = Pair(1, null)
-        startHomeActivity()
+        val homeIntent = Intent(applicationContext, HomeActivity::class.java)
+        homeIntent.putExtra("userId", firebaseAuth.currentUser!!.uid)
+        homeIntent.flags =
+            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        applicationContext.startActivity(homeIntent)
     }
 
     override fun onFailure(message: String?) {

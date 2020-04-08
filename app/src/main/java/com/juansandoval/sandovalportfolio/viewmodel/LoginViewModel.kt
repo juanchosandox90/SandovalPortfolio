@@ -32,7 +32,6 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 .addOnCompleteListener { auth ->
                     if (auth.isSuccessful) {
                         authInterface?.onSuccess()
-
                     } else {
                         authInterface?.onFailure(auth.exception?.message.toString())
                     }
