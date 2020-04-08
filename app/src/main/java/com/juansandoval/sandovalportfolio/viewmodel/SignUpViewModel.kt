@@ -1,6 +1,7 @@
 package com.juansandoval.sandovalportfolio.viewmodel
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -68,11 +69,7 @@ class SignUpViewModel : ViewModel() {
 
                         mDataBase!!.setValue(userObject).addOnCompleteListener { task: Task<Void> ->
                             if (task.isSuccessful) {
-                                val dashboardIntent = Intent(view.context, HomeActivity::class.java)
-                                dashboardIntent.putExtra("name", name)
-                                dashboardIntent.flags =
-                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                view.context.startActivity(dashboardIntent)
+                                Log.d("Successful", "true")
                             } else {
                                 Toast.makeText(
                                     view.context,
