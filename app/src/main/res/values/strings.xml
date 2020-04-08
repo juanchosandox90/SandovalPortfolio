@@ -25,4 +25,9 @@
     <string name="name_signup_title">Name</string>
     <string name="name_signup_hint">Enter your name</string>
     <string name="confirm_password_sign_up_title">Confirm Password</string>
+    <string name="log_out_option">Log out</string>
+    <string name="settings_option">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cancel_option">Cancel</string>
+    <string name="dialog_log_out_title">Are you sure you want to log out?</string>
 </resources>

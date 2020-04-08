@@ -1,22 +1,22 @@
 package com.juansandoval.sandovalportfolio.viewmodel
 
+import android.app.Application
 import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.juansandoval.sandovalportfolio.R
-import com.juansandoval.sandovalportfolio.ui.activities.HomeActivity
 import com.juansandoval.sandovalportfolio.ui.activities.LoginActivity
 import com.juansandoval.sandovalportfolio.ui.auth.AuthListener
 
-class SignUpViewModel : ViewModel() {
+class SignUpViewModel(application: Application) : AndroidViewModel(application) {
     private val firebaseAuth = FirebaseAuth.getInstance()
     private var mDataBase: DatabaseReference? = null
     val signupLiveData = MutableLiveData<Pair<Int?, String?>>()
