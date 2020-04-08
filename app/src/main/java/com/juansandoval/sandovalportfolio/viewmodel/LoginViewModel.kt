@@ -1,15 +1,17 @@
 package com.juansandoval.sandovalportfolio.viewmodel
 
+import android.app.Application
 import android.content.Intent
 import android.view.View
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.juansandoval.sandovalportfolio.ui.activities.SignUpActivity
 import com.juansandoval.sandovalportfolio.ui.auth.AuthListener
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(application: Application) : AndroidViewModel(application) {
+
     private val firebaseAuth = FirebaseAuth.getInstance()
 
     var email: String? = null

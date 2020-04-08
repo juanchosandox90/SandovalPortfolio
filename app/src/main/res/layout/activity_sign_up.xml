@@ -212,6 +212,7 @@
                         android:text="@string/google_signup_text_btn"
                         android:textAlignment="center"
                         android:textAllCaps="false"
+                        android:onClick="googleSignUp"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
