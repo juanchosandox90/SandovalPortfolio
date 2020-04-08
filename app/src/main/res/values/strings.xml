@@ -9,4 +9,7 @@
     <string name="google_login_text_btn">Sign in with Google</string>
     <string name="forgot_password_option">Forgot Password?</string>
     <string name="or_separator_login">or</string>
+    <string name="success_login">Success!</string>
+    <string name="ops_something_went_wrong">Ops! something went wrong</string>
+    <string name="loading_login">Loading …</string>
 </resources>

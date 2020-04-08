@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -25,7 +24,9 @@ android {
         }
     }
 
-    dataBinding { enabled = true }
+    dataBinding {
+        enabled = true
+    }
 
 }
 
