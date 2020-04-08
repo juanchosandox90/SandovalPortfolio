@@ -49,6 +49,7 @@ class SignUpViewModel : ViewModel() {
 
                         userObject["display_name"] = name!!.trim()
                         userObject["status"] = "Hello There"
+                        userObject["email"] = email!!.trim()
                         userObject["image"] = "default"
                         userObject["thumb_image"] = "default"
 
