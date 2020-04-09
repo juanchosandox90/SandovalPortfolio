@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.juansandoval.sandovalportfolio.ui.fragments.*
 
-class SectionPagerAdapter(fragmentActivity: FragmentActivity) :
+class SectionPagerAdapter (fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int = 5
 
