@@ -28,7 +28,7 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application) 
     var name: String? = null
 
     fun signUp(view: View) {
-        signupLiveData.value = Pair(0, null)
+        signupLiveData.postValue(Pair(0, null))
         authInterface?.onStarted()
 
         if (email.isNullOrEmpty() || pass.isNullOrEmpty() || confirmPass.isNullOrEmpty() || name.isNullOrEmpty()) {
