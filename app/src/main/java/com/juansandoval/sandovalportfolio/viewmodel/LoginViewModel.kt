@@ -21,7 +21,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     val authLiveData = MutableLiveData<Pair<Int?, String?>>()
 
     fun onLoginButtonClick(view: View) {
-        authLiveData.value = Pair(0, null)
+        authLiveData.postValue(Pair(0, null))
         authInterface?.onStarted()
 
         if (email.isNullOrEmpty() || password.isNullOrEmpty()) {

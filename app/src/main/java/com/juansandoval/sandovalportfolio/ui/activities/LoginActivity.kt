@@ -2,6 +2,7 @@ package com.juansandoval.sandovalportfolio.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -73,7 +74,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     }
 
     override fun onSuccess() {
-        viewModel.authLiveData.value = Pair(1, null)
+        viewModel.authLiveData.postValue(Pair(1, null))
         val homeIntent = Intent(applicationContext, HomeActivity::class.java)
         homeIntent.putExtra("userId", firebaseAuth.currentUser!!.uid)
         homeIntent.flags =
@@ -98,18 +99,11 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
                 val userObject = HashMap<String, String>()
 
-                mDataBase!!.addValueEventListener(object : ValueEventListener {
+                mDataBase!!.addListenerForSingleValueEvent(object : ValueEventListener {
+
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        if (dataSnapshot.hasChild("Users/$userId")) {
-                            userObject["display_name"] = acct.displayName.toString()
-                            mDataBase!!.setValue(userObject)
-                                .addOnCompleteListener { task: Task<Void> ->
-                                    if (task.isSuccessful) {
-                                        onSuccess()
-                                    } else {
-                                        onFailure(getString(R.string.ops_something_went_wrong))
-                                    }
-                                }
+                        if (dataSnapshot.exists()) {
+                            onSuccess()
                         } else {
                             userObject["display_name"] = acct.displayName.toString()
                             userObject["status"] = "Hello There"
@@ -130,9 +124,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
                     override fun onCancelled(dbError: DatabaseError) {
                         onFailure(getString(R.string.ops_something_went_wrong))
                     }
-
                 })
-
             } else {
                 onFailure(getString(R.string.ops_something_went_wrong))
             }
@@ -148,7 +140,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account!!)
             } catch (e: ApiException) {
-                Toast.makeText(this, "Google sign in failed:(", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Google sign in failed :(", Toast.LENGTH_LONG).show()
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.juansandoval.sandovalportfolio.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -96,7 +97,7 @@ class HomeActivity : AppCompatActivity() {
                 logoutDialog()
             }
             R.id.settings_action -> {
-                //startActivity(Intent(this, SettingsActivity::class.java))
+                startActivity(Intent(this, SettingsActivity::class.java))
             }
         }
 

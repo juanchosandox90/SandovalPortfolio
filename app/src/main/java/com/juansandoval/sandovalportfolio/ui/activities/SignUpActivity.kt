@@ -3,6 +3,7 @@ package com.juansandoval.sandovalportfolio.ui.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -62,7 +63,7 @@ class SignUpActivity : AppCompatActivity(), AuthListener {
     }
 
     override fun onSuccess() {
-        viewModel.signupLiveData.value = Pair(1, null)
+        viewModel.signupLiveData.postValue(Pair(1, null))
         val homeIntent = Intent(applicationContext, HomeActivity::class.java)
         homeIntent.putExtra("userId", firebaseAuth.currentUser!!.uid)
         homeIntent.flags =
@@ -87,18 +88,11 @@ class SignUpActivity : AppCompatActivity(), AuthListener {
 
                 val userObject = HashMap<String, String>()
 
-                mDataBase!!.addValueEventListener(object : ValueEventListener {
+                mDataBase!!.addListenerForSingleValueEvent(object : ValueEventListener {
+
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        if (dataSnapshot.hasChild("Users/$userId")) {
-                            userObject["display_name"] = acct.displayName.toString()
-                            mDataBase!!.setValue(userObject)
-                                .addOnCompleteListener { task: Task<Void> ->
-                                    if (task.isSuccessful) {
-                                        onSuccess()
-                                    } else {
-                                        onFailure(getString(R.string.ops_something_went_wrong))
-                                    }
-                                }
+                        if (dataSnapshot.exists()) {
+                            onSuccess()
                         } else {
                             userObject["display_name"] = acct.displayName.toString()
                             userObject["status"] = "Hello There"
@@ -119,9 +113,7 @@ class SignUpActivity : AppCompatActivity(), AuthListener {
                     override fun onCancelled(dbError: DatabaseError) {
                         onFailure(getString(R.string.ops_something_went_wrong))
                     }
-
                 })
-
             } else {
                 onFailure(getString(R.string.ops_something_went_wrong))
             }

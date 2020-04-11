@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.juansandoval.sandovalportfolio.R
 import com.juansandoval.sandovalportfolio.data.User
@@ -19,8 +21,15 @@ class UserAdapter(databaseQuery: DatabaseReference, var context: Context?) :
         ViewHolder::class.java,
         databaseQuery
     ) {
+    var mFirebaseUser: FirebaseUser? = null
     override fun populateViewHolder(viewHolder: ViewHolder?, user: User?, position: Int) {
-        var userId = getRef(position).key
+        mFirebaseUser = FirebaseAuth.getInstance().currentUser
+        val currentUserId = mFirebaseUser!!.uid
+        val userId = getRef(position).key
+        if (currentUserId == userId) {
+            viewHolder!!.itemView.visibility = View.GONE
+            viewHolder.itemView.layoutParams = RecyclerView.LayoutParams(0, 0)
+        }
         viewHolder!!.bindView(user!!, context!!)
         val userName = viewHolder.userNameText
         var status = viewHolder.userStatusText

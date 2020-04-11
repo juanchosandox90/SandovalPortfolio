@@ -30,4 +30,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cancel_option">Cancel</string>
     <string name="dialog_log_out_title">Are you sure you want to log out?</string>
+    <string name="enter_your_status_title">Enter your status</string>
+    <string name="change_profile_img_option">Change Profile Image</string>
+    <string name="change_status_option">Change Status</string>
+    <string name="update_status_option">Update Status</string>
 </resources>
