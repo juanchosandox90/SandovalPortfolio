@@ -34,4 +34,6 @@
     <string name="change_profile_img_option">Change Profile Image</string>
     <string name="change_status_option">Change Status</string>
     <string name="update_status_option">Update Status</string>
+    <string name="select_image_title">Select Image</string>
+    <string name="loading_general">Loading …</string>
 </resources>
