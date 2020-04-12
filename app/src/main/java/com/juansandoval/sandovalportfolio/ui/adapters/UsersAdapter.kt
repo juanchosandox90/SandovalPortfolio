@@ -1,8 +1,10 @@
 package com.juansandoval.sandovalportfolio.ui.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -12,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.juansandoval.sandovalportfolio.R
 import com.juansandoval.sandovalportfolio.data.User
+import com.juansandoval.sandovalportfolio.ui.activities.ProfileActivity
 import kotlinx.android.synthetic.main.users_item_row.view.*
 
 class UserAdapter(databaseQuery: DatabaseReference, var context: Context?) :
@@ -31,11 +34,21 @@ class UserAdapter(databaseQuery: DatabaseReference, var context: Context?) :
             viewHolder.itemView.layoutParams = RecyclerView.LayoutParams(0, 0)
         }
         viewHolder!!.bindView(user!!, context!!)
-        val userName = viewHolder.userNameText
-        var status = viewHolder.userStatusText
-        var profilePic = viewHolder.userProfileImageTxt
         viewHolder.itemView.setOnClickListener {
-            Toast.makeText(context, "User Taped: $userName", Toast.LENGTH_LONG).show()
+            val builder = androidx.appcompat.app.AlertDialog.Builder(context!!)
+            val dialog: androidx.appcompat.app.AlertDialog = builder.create()
+            val dialogLayout =
+                LayoutInflater.from(context).inflate(R.layout.activity_dialog_tap_user, null)
+            val openProfile = dialogLayout.findViewById<Button>(R.id.openProfileId)
+            openProfile.setOnClickListener {
+                val profileIntent = Intent(context, ProfileActivity::class.java)
+                profileIntent.putExtra("userId", userId)
+                context!!.startActivity(profileIntent)
+                dialog.dismiss()
+            }
+            dialog.setView(dialogLayout)
+            dialog.setCancelable(true)
+            dialog.show()
         }
     }
 
