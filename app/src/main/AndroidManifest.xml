@@ -16,10 +16,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".ui.activities.ProfileActivity"
+            android:theme="@style/WithActionBar" />
+        <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".ui.activities.SettingsActivity"
-            android:theme="@style/WithActionBar"/>
+        <activity
+            android:name=".ui.activities.SettingsActivity"
+            android:theme="@style/WithActionBar" />
         <activity
             android:name=".ui.activities.SignUpActivity"
             android:theme="@style/NoActionBar" />

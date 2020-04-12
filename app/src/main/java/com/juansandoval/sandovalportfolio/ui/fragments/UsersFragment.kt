@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-
 import com.juansandoval.sandovalportfolio.R
 import com.juansandoval.sandovalportfolio.ui.adapters.UserAdapter
 import kotlinx.android.synthetic.main.fragment_users.*
@@ -35,10 +34,4 @@ class UsersFragment : Fragment() {
         userRecyclerViewId.layoutManager = linearLayoutManager
         userRecyclerViewId.adapter = userAdapter
     }
-
-    override fun onStart() {
-        super.onStart()
-        userAdapter!!.startListening()
-    }
-
 }
