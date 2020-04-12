@@ -67,7 +67,7 @@ class HomeActivity : AppCompatActivity() {
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position) {
                     0 -> {
-                        tab.text = "Users"
+                        tab.text = "About"
                     }
                     1 -> {
                         tab.text = "Work"
@@ -76,10 +76,7 @@ class HomeActivity : AppCompatActivity() {
                         tab.text = "Skills"
                     }
                     3 -> {
-                        tab.text = "About"
-                    }
-                    4 -> {
-                        tab.text = "Contact"
+                        tab.text = "Users"
                     }
                 }
             }).attach()
