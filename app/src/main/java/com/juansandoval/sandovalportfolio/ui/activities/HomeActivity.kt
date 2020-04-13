@@ -1,13 +1,14 @@
 package com.juansandoval.sandovalportfolio.ui.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -16,6 +17,7 @@ import com.juansandoval.sandovalportfolio.R
 import com.juansandoval.sandovalportfolio.ui.adapters.SectionPagerAdapter
 import com.juansandoval.sandovalportfolio.utils.startLoginActivity
 import kotlinx.android.synthetic.main.activity_home.*
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -79,6 +81,7 @@ class HomeActivity : AppCompatActivity() {
                         tab.text = "Users"
                     }
                 }
+                dashboardViewPager.offscreenPageLimit = 4
             }).attach()
     }
 
