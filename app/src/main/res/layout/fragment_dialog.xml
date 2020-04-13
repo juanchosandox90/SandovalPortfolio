@@ -72,7 +72,7 @@
                 android:text="@string/success_login"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -103,7 +103,7 @@
                 android:text="@string/ops_something_went_wrong"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
