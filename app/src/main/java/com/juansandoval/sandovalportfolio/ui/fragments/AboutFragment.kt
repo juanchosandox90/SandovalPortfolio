@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_about.*
 
 class AboutFragment : Fragment() {
 
-    var mUserDatabase: DatabaseReference? = null
+    private var mUserDatabase: DatabaseReference? = null
     private lateinit var textTitle: TypeWriteTextView
     private lateinit var textDescription: TypeWriteTextView
     private lateinit var textDescription2: TypeWriteTextView

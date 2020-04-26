@@ -17,14 +17,14 @@ import com.juansandoval.sandovalportfolio.data.User
 import com.juansandoval.sandovalportfolio.ui.activities.ProfileActivity
 import kotlinx.android.synthetic.main.users_item_row.view.*
 
-class UserAdapter(databaseQuery: DatabaseReference, var context: Context?) :
-    FirebaseRecyclerAdapter<User, UserAdapter.ViewHolder>(
+class UsersAdapter(databaseQuery: DatabaseReference, var context: Context?) :
+    FirebaseRecyclerAdapter<User, UsersAdapter.ViewHolder>(
         User::class.java,
         R.layout.users_item_row,
         ViewHolder::class.java,
         databaseQuery
     ) {
-    var mFirebaseUser: FirebaseUser? = null
+    private var mFirebaseUser: FirebaseUser? = null
     override fun populateViewHolder(viewHolder: ViewHolder?, user: User?, position: Int) {
         mFirebaseUser = FirebaseAuth.getInstance().currentUser
         val currentUserId = mFirebaseUser!!.uid
@@ -53,9 +53,9 @@ class UserAdapter(databaseQuery: DatabaseReference, var context: Context?) :
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var userNameText: String? = null
-        var userStatusText: String? = null
-        var userProfileImageTxt: String? = null
+        private var userNameText: String? = null
+        private var userStatusText: String? = null
+        private var userProfileImageTxt: String? = null
 
         fun bindView(users: User, context: Context) {
             val userName = itemView.profileDisplaName

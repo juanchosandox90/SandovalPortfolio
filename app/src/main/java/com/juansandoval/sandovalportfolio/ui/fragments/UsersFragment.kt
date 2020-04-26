@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.juansandoval.sandovalportfolio.R
-import com.juansandoval.sandovalportfolio.ui.adapters.UserAdapter
+import com.juansandoval.sandovalportfolio.ui.adapters.UsersAdapter
 import kotlinx.android.synthetic.main.fragment_users.*
 
 class UsersFragment : Fragment() {
 
-    var mUserDatabase: DatabaseReference? = null
-    var userAdapter: UserAdapter? = null
-    var linearLayoutManager: LinearLayoutManager? = null
+    private var mUserDatabase: DatabaseReference? = null
+    private var userAdapter: UsersAdapter? = null
+    private var linearLayoutManager: LinearLayoutManager? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,7 @@ class UsersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        userAdapter = UserAdapter(mUserDatabase!!, context)
+        userAdapter = UsersAdapter(mUserDatabase!!, context)
         userRecyclerViewId.layoutManager = linearLayoutManager
         userRecyclerViewId.adapter = userAdapter
     }
