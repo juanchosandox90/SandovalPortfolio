@@ -46,13 +46,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    
+    //Firebase
     implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'com.google.firebase:firebase-database:19.3.0'
     implementation 'com.google.firebase:firebase-analytics:17.4.0'
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
     implementation 'com.firebaseui:firebase-ui-database:2.1.1'
 
+    //Google Materials
     implementation 'com.google.android.material:material:1.2.0-alpha06'
     implementation 'com.shobhitpuri.custombuttons:google-signin:1.1.0'
     implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
