@@ -16,6 +16,12 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".ui.activities.WebViewActivity"
+            android:theme="@style/WithActionBar" />
+        <activity
+            android:name=".ui.activities.WorkDetailsActivity"
+            android:theme="@style/WithActionBar" />
+        <activity
             android:name=".ui.activities.ProfileActivity"
             android:theme="@style/WithActionBar" />
         <activity

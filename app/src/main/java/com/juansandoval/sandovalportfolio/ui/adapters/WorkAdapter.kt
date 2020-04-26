@@ -1,8 +1,8 @@
 package com.juansandoval.sandovalportfolio.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -10,6 +10,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.google.firebase.database.DatabaseReference
 import com.juansandoval.sandovalportfolio.R
 import com.juansandoval.sandovalportfolio.data.Work
+import com.juansandoval.sandovalportfolio.ui.activities.WorkDetailsActivity
 import kotlinx.android.synthetic.main.work_item_row.view.*
 
 class WorkAdapter(databaseQuery: DatabaseReference, var context: Context?) :
@@ -24,8 +25,9 @@ class WorkAdapter(databaseQuery: DatabaseReference, var context: Context?) :
         val workId = getRef(position).key
         viewHolder!!.bindView(work!!, context!!)
         viewHolder.itemView.setOnClickListener {
-            // TODO: Go to work details activity.
-            Toast.makeText(context, "Work Id: $workId", Toast.LENGTH_LONG).show()
+            val workDetailIntent = Intent(context, WorkDetailsActivity::class.java)
+            workDetailIntent.putExtra("workId", workId)
+            context!!.startActivity(workDetailIntent)
         }
     }
 

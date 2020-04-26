@@ -36,4 +36,5 @@
     <string name="update_status_option">Update Status</string>
     <string name="select_image_title">Select Image</string>
     <string name="loading_general">Loading …</string>
+    <string name="website_title">Website:</string>
 </resources>
