@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBg"
+    tools:context=".ui.activities.ProfileActivity">
+
+    <ImageView
+        android:id="@+id/profileImageIv"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_account_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profileDisplayNameTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Display Name"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileImageIv" />
+
+    <TextView
+        android:id="@+id/profileStatusTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/roboto"
+        android:text="Hey! Im really happy"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/profileDisplayNameTxt"
+        app:layout_constraintStart_toStartOf="@+id/profileDisplayNameTxt"
+        app:layout_constraintTop_toBottomOf="@+id/profileDisplayNameTxt" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/roboto"
+        android:text="Contact Email: "
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/profileStatusTxt"
+        app:layout_constraintTop_toBottomOf="@+id/profileStatusTxt" />
+
+    <TextView
+        android:id="@+id/profileEmailText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/roboto"
+        android:text="juan@gmail.com"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/profileStatusTxt"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <!-- <Button
+         android:id="@+id/profileSendMessageBtn"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="60dp"
+         android:layout_marginTop="32dp"
+         android:layout_marginEnd="60dp"
+         android:background="@drawable/bt_shape_3"
+         android:fontFamily="@font/roboto_bold"
+         android:stateListAnimator="@drawable/state_list_animator_z"
+         android:text="Send Message"
+         android:textAllCaps="false"
+         android:textColor="@android:color/white"
+         android:textSize="18sp"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/profileStatusTxt" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

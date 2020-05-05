@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+FrameLayout is used as top level layout because when the CardView is getting
+animated, it needs to stay centered. Otherwise we need to animate x and y values
+too. layout_gravity="center_horizontal" is a lot simpler.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/darkBg">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@color/darkBg"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
+        tools:layout_marginLeft="20dp"
+        tools:layout_marginRight="20dp">
+
+        <FrameLayout
+            android:id="@+id/card_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bt_shape_3">
+
+            <!--
+            scale_container is used to scale down the item when the scale down
+            animation happens. card_container re-sizes height and width while
+            scale_container scales the inside views to make it look natural
+            -->
+
+            <RelativeLayout
+                android:id="@+id/scale_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bt_shape_3"
+                android:paddingLeft="@dimen/list_item_horizontal_padding"
+                android:paddingTop="@dimen/list_item_vertical_padding"
+                android:paddingRight="@dimen/list_item_horizontal_padding"
+                android:paddingBottom="@dimen/list_item_vertical_padding"
+                android:transformPivotX="0dp">
+
+                <ImageView
+                    android:id="@+id/chevron"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/title"
+                    android:layout_alignBottom="@+id/subtitle1"
+                    android:layout_marginEnd="16dp"
+                    android:tint="@color/colorPrimary"
+                    app:srcCompat="@drawable/ic_chevron_right" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toEndOf="@id/chevron"
+                    android:text="Kotlin"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="Kotlin" />
+
+                <View
+                    android:id="@+id/subtitle1"
+                    android:layout_width="120dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/title"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@id/chevron"
+                    android:background="@drawable/ic_pill"
+                    android:backgroundTint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/subtitle2"
+                    android:layout_width="85dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toEndOf="@id/subtitle1"
+                    android:text="85%"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="85%" />
+
+                <LinearLayout
+                    android:id="@+id/expand_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/subtitle2"
+                    android:layout_alignStart="@id/title"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bt_shape_3"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    tools:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+
+                        <TextView
+                            android:id="@+id/subtitleskill"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_weight="1"
+                            android:text="RxKtx"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:transformPivotX="0dp"
+                            tools:text="RxKtx" />
+
+
+                        <TextView
+                            android:id="@+id/subtitleskill2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_weight="1.5"
+                            android:text="Extension Kt"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/list_item_fg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0"
+                android:visibility="visible"
+                tools:visibility="gone" />
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

@@ -12,3 +12,5 @@
 /captures
 .externalNativeBuild
 .cxx
+/.idea/render.experimental.xml
+app/google-services.json
