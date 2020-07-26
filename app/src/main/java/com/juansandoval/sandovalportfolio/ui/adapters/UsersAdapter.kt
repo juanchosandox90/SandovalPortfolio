@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.firebase.ui.database.FirebaseRecyclerAdapter
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
+import com.huawei.agconnect.auth.AGConnectAuth
+import com.huawei.agconnect.auth.AGConnectUser
 import com.juansandoval.sandovalportfolio.R
 import com.juansandoval.sandovalportfolio.data.User
 import com.juansandoval.sandovalportfolio.ui.activities.ProfileActivity
@@ -24,10 +24,10 @@ class UsersAdapter(databaseQuery: DatabaseReference, var context: Context?) :
         ViewHolder::class.java,
         databaseQuery
     ) {
-    private var mFirebaseUser: FirebaseUser? = null
+    private var mHuaweiUser: AGConnectUser? = null
     override fun populateViewHolder(viewHolder: ViewHolder?, user: User?, position: Int) {
-        mFirebaseUser = FirebaseAuth.getInstance().currentUser
-        val currentUserId = mFirebaseUser!!.uid
+        mHuaweiUser = AGConnectAuth.getInstance().currentUser
+        val currentUserId = mHuaweiUser!!.uid
         val userId = getRef(position).key
         if (currentUserId == userId) {
             viewHolder!!.itemView.visibility = View.GONE

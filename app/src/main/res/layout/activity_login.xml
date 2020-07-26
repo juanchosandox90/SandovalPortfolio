@@ -157,17 +157,15 @@
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
-                    <com.shobhitpuri.custombuttons.GoogleSignInButton
-                        android:id="@+id/button_google_sign_in"
+                    <com.huawei.hms.support.hwid.ui.HuaweiIdAuthButton
+                        android:id="@+id/btnHuaweiSignIn"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="19dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="22dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginEnd="19dp"
+                        android:layout_marginEnd="22dp"
                         android:layout_marginBottom="8dp"
-                        android:onClick="googleSignIn"
                         android:stateListAnimator="@drawable/state_list_animator_z"
-                        android:text="@string/google_login_text_btn"
                         android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"

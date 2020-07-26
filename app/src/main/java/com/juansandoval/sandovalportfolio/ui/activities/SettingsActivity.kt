@@ -8,7 +8,6 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -16,14 +15,13 @@ import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
+import com.huawei.agconnect.auth.AGConnectAuth
+import com.huawei.agconnect.auth.AGConnectUser
 import com.juansandoval.sandovalportfolio.R
-import com.juansandoval.sandovalportfolio.utils.CustomDialog
 import com.juansandoval.sandovalportfolio.utils.CustomProgressBar
 import com.juansandoval.sandovalportfolio.utils.startLoginActivity
 import com.theartofdev.edmodo.cropper.CropImage
@@ -35,16 +33,17 @@ import java.io.File
 class SettingsActivity : AppCompatActivity() {
 
     private var mDataBase: DatabaseReference? = null
-    private var mCurrentUser: FirebaseUser? = null
+    private var mCurrentUser: AGConnectUser? = null
     private var mStorageRef: StorageReference? = null
     private var userStatus: Any? = null
+    private var userEmail: Any? = null
     private var GALLERY_ID: Int = 1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        mCurrentUser = FirebaseAuth.getInstance().currentUser
+        mCurrentUser = AGConnectAuth.getInstance().currentUser
         supportActionBar!!.title = "Settings"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         val userId = mCurrentUser!!.uid
@@ -55,6 +54,7 @@ class SettingsActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val displayName = dataSnapshot.child("display_name").value
                 userStatus = dataSnapshot.child("status").value
+                userEmail = dataSnapshot.child("email").value
                 val imageProfile = dataSnapshot.child("image").value.toString()
                 settingsStatusText.text = userStatus.toString()
                 settingsDisplayName.text = displayName.toString()
@@ -85,6 +85,10 @@ class SettingsActivity : AppCompatActivity() {
 
         settingsLogoutBtn.setOnClickListener {
             logoutDialog()
+        }
+
+        settingsChangeEmailBtn.setOnClickListener {
+            openDialogChangeEmail()
         }
 
         settingsImgBtn.setOnClickListener {
@@ -137,6 +141,38 @@ class SettingsActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    private fun openDialogChangeEmail() {
+        val builder = AlertDialog.Builder(this)
+        val dialog: AlertDialog = builder.create()
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.activity_dialog_email, null)
+        val emailUpdateEt = dialogLayout.findViewById<EditText>(R.id.emailUpdateEt)
+        val emailUpdateBtn = dialogLayout.findViewById<Button>(R.id.emailUpdateBtn)
+        if (userEmail != null) {
+            emailUpdateEt.setText(userStatus.toString())
+        } else if (userEmail == null) {
+            emailUpdateEt.setText(getString(R.string.enter_your_status_title))
+        }
+        emailUpdateBtn.setOnClickListener {
+            val status = emailUpdateEt.text.toString().trim()
+            mDataBase!!.child("email").setValue(status).addOnCompleteListener { task: Task<Void> ->
+                if (task.isSuccessful) {
+                    dialog.dismiss()
+                } else {
+                    Toast.makeText(
+                        this,
+                        getString(R.string.ops_something_went_wrong),
+                        Toast.LENGTH_LONG
+                    )
+                        .show()
+                }
+            }
+        }
+        dialog.setView(dialogLayout)
+        dialog.setCancelable(true)
+        dialog.show()
+    }
+
     private fun logoutDialog() {
         val builder = AlertDialog.Builder(this)
         val dialog: AlertDialog = builder.create()
@@ -145,7 +181,7 @@ class SettingsActivity : AppCompatActivity() {
         val logoutBtn = dialogLayout.findViewById<Button>(R.id.logoutBtn)
         val cancelBtn = dialogLayout.findViewById<Button>(R.id.cancelBtn)
         logoutBtn.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
+            AGConnectAuth.getInstance().signOut()
             startLoginActivity()
             finish()
             dialog.dismiss()

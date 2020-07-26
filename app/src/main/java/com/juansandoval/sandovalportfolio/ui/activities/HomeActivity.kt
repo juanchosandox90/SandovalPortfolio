@@ -9,9 +9,9 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.huawei.agconnect.auth.AGConnectAuth
+import com.huawei.agconnect.auth.AGConnectUser
 import com.juansandoval.sandovalportfolio.R
 import com.juansandoval.sandovalportfolio.ui.adapters.SectionPagerAdapter
 import com.juansandoval.sandovalportfolio.utils.startLoginActivity
@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 class HomeActivity : AppCompatActivity() {
 
     private var sectionPagerAdapter: SectionPagerAdapter? = null
-    private var mCurrentUser: FirebaseUser? = null
+    private var mCurrentUser: AGConnectUser? = null
     private var mDataBase: DatabaseReference? = null
     private var userId: String? = null
 
@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
         setPager()
         if (intent.extras != null) {
             userId = intent!!.extras!!.get("userId").toString()
-            mCurrentUser = FirebaseAuth.getInstance().currentUser
+            mCurrentUser = AGConnectAuth.getInstance().currentUser
             mDataBase = FirebaseDatabase.getInstance().reference.child("Users").child(userId!!)
             setupProfile()
         }
@@ -112,7 +112,7 @@ class HomeActivity : AppCompatActivity() {
         val logoutBtn = dialogLayout.findViewById<Button>(R.id.logoutBtn)
         val cancelBtn = dialogLayout.findViewById<Button>(R.id.cancelBtn)
         logoutBtn.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
+            AGConnectAuth.getInstance().signOut()
             startLoginActivity()
             finish()
             dialog.dismiss()

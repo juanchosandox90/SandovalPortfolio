@@ -6,6 +6,7 @@
     <string name="enter_your_password_login_hint">Enter your password</string>
     <string name="enter_your_password_signup_hint">Enter your password</string>
     <string name="confirm_your_password_sign_up_hint">Confirm your password</string>
+    <string name="verify_your_code_hint">Enter your verification code</string>
     <string name="password_login_title">Password</string>
     <string name="password_signup_title">Password</string>
     <string name="dont_have_an_account_option">Don\'t have an account.\nRegister Here</string>
@@ -13,6 +14,8 @@
     <string name="invalid_email_password">Invalid email or password</string>
     <string name="log_in_text_btn">Log in</string>
     <string name="sign_up_text_btn">Sign up</string>
+    <string name="verify_text_btn">Send Code</string>
+    <string name="verify_sent_email">Verification code has been sent. Please check your email</string>
     <string name="google_login_text_btn">Sign in with Google</string>
     <string name="google_signup_text_btn">Sign up with Google</string>
     <string name="forgot_password_option">Forgot Password?</string>
@@ -25,15 +28,19 @@
     <string name="name_signup_title">Name</string>
     <string name="name_signup_hint">Enter your name</string>
     <string name="confirm_password_sign_up_title">Confirm Password</string>
+    <string name="verify_code_title">Verify Code</string>
     <string name="log_out_option">Log out</string>
     <string name="settings_option">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cancel_option">Cancel</string>
     <string name="dialog_log_out_title">Are you sure you want to log out?</string>
     <string name="enter_your_status_title">Enter your status</string>
+    <string name="enter_your_email_title">Enter your email</string>
     <string name="change_profile_img_option">Change Profile Image</string>
     <string name="change_status_option">Change Status</string>
+    <string name="change_email_option">Change Email</string>
     <string name="update_status_option">Update Status</string>
+    <string name="update_email_option">Update Email</string>
     <string name="select_image_title">Select Image</string>
     <string name="loading_general">Loading …</string>
     <string name="website_title">Website:</string>

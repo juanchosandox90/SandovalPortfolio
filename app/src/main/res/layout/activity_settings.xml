@@ -69,7 +69,7 @@
         android:id="@+id/settingsChangeStatusBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/bt_shape_3"
         android:stateListAnimator="@drawable/state_list_animator_z"
         android:text="@string/change_status_option"
@@ -81,19 +81,35 @@
         app:layout_constraintTop_toBottomOf="@+id/settingsImgBtn" />
 
     <Button
+        android:id="@+id/settingsChangeEmailBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bt_shape_3"
+        android:stateListAnimator="@drawable/state_list_animator_z"
+        android:text="@string/change_email_option"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/settingsChangeStatusBtn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/settingsChangeStatusBtn"
+        app:layout_constraintTop_toBottomOf="@+id/settingsChangeStatusBtn" />
+
+    <Button
         android:id="@+id/settingsLogoutBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/bt_shape_3"
         android:stateListAnimator="@drawable/state_list_animator_z"
         android:text="@string/log_out_option"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/settingsChangeStatusBtn"
-        app:layout_constraintStart_toStartOf="@+id/settingsChangeStatusBtn"
-        app:layout_constraintTop_toBottomOf="@+id/settingsChangeStatusBtn" />
+        app:layout_constraintEnd_toEndOf="@+id/settingsChangeEmailBtn"
+        app:layout_constraintStart_toStartOf="@+id/settingsChangeEmailBtn"
+        app:layout_constraintTop_toBottomOf="@+id/settingsChangeEmailBtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
