@@ -5,14 +5,15 @@ import android.content.Intent
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.huawei.agconnect.auth.AGConnectAuth
+import com.huawei.agconnect.auth.AGConnectUser
+import com.huawei.agconnect.auth.EmailAuthProvider
 import com.juansandoval.sandovalportfolio.ui.activities.SignUpActivity
 import com.juansandoval.sandovalportfolio.ui.auth.AuthListener
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val firebaseAuth = FirebaseAuth.getInstance()
+    private val huaweiAuth = AGConnectAuth.getInstance()
 
     var email: String? = null
     var password: String? = null
@@ -28,7 +29,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             authInterface?.onFailure("Invalid email or password")
 
         } else {
-            firebaseAuth.signInWithEmailAndPassword(email!!, password!!)
+
+            val credential = EmailAuthProvider.credentialWithPassword(email, password)
+            AGConnectAuth.getInstance().signIn(credential)
                 .addOnCompleteListener { auth ->
                     if (auth.isSuccessful) {
                         authInterface?.onSuccess()
@@ -39,8 +42,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun verifyUserLoggedIn(): FirebaseUser? {
-        return firebaseAuth.currentUser
+    fun verifyUserLoggedIn(): AGConnectUser? {
+        return huaweiAuth.currentUser
     }
 
     fun goToSignup(view: View) {

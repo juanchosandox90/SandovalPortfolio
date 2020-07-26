@@ -5,15 +5,15 @@ import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.huawei.agconnect.auth.AGConnectAuth
+import com.huawei.agconnect.auth.AGConnectUser
 import com.juansandoval.sandovalportfolio.R
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity : AppCompatActivity() {
 
-    private var mCurrentUser: FirebaseUser? = null
+    private var mCurrentUser: AGConnectUser? = null
     private var mDataBase: DatabaseReference? = null
     private var userId: String? = null
 
@@ -24,7 +24,7 @@ class ProfileActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         if (intent.extras != null) {
             userId = intent!!.extras!!.get("userId").toString()
-            mCurrentUser = FirebaseAuth.getInstance().currentUser
+            mCurrentUser = AGConnectAuth.getInstance().currentUser
             mDataBase = FirebaseDatabase.getInstance().reference.child("Users").child(userId!!)
             setupProfile()
         }

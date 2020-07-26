@@ -172,22 +172,75 @@
                         android:textColorHint="@color/grey_500"
                         android:textCursorDrawable="@drawable/bg_input_cursor_2" />
 
-
-                    <Button
-                        android:id="@+id/button_sign_in"
-                        android:layout_width="fill_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="22dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="22dp"
-                        android:background="@drawable/bt_shape_3"
-                        android:onClick="@{viewmodel::signUp}"
-                        android:stateListAnimator="@drawable/state_list_animator_z"
-                        android:text="@string/sign_up_text_btn"
-                        android:textAllCaps="false"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/verify_code_title"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
+
+
+                    <EditText
+                        android:id="@+id/edit_text_verify_code"
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/selector_bg_edit_2"
+                        android:drawableStart="@drawable/ic_lock"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@android:color/white"
+                        android:hint="@string/verify_your_code_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:text="@={viewmodel.verCode}"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@color/grey_500"
+                        android:textCursorDrawable="@drawable/bg_input_cursor_2" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/button_sign_in"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bt_shape_3"
+                            android:onClick="@{viewmodel::signUpHuawei}"
+                            android:stateListAnimator="@drawable/state_list_animator_z"
+                            android:text="@string/sign_up_text_btn"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                        <Button
+                            android:id="@+id/button_verify"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bt_shape_3"
+                            android:onClick="@{viewmodel::sendVerificationCode}"
+                            android:stateListAnimator="@drawable/state_list_animator_z"
+                            android:text="@string/verify_text_btn"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -200,19 +253,18 @@
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
-                    <com.shobhitpuri.custombuttons.GoogleSignInButton
-                        android:id="@+id/button_google_sign_in"
+                    <com.huawei.hms.support.hwid.ui.HuaweiIdAuthButton
+                        android:id="@+id/btnHuaweiSignUp"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="19dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="22dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginEnd="19dp"
+                        android:layout_marginEnd="22dp"
                         android:layout_marginBottom="8dp"
                         android:stateListAnimator="@drawable/state_list_animator_z"
                         android:text="@string/google_signup_text_btn"
                         android:textAlignment="center"
                         android:textAllCaps="false"
-                        android:onClick="googleSignUp"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
